@@ -1,0 +1,94 @@
+import { Text, Button, StyleSheet, View, TextInput } from 'react-native';
+import { useState } from 'react';
+
+export default function App() {
+
+  const [texto, setTexto] = useState('');
+  const [resultado, setResultado] = useState('');
+  const [mostrar, setMostrar] = useState(false);
+
+  const converterMaiusculo = () => {
+    if (texto.length <= 0) {
+      alert('Digite algo antes de continuar');
+    } else {
+      setResultado(texto.toUpperCase());
+      setMostrar(true);
+    }
+  };
+
+  const converterMinusculo = () => {
+    if (texto.length <= 0) {
+      alert('Digite algo antes de continuar');
+    } else {
+      setResultado(texto.toLowerCase());
+      setMostrar(true);
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      
+      <TextInput 
+        style={styles.input}
+        onChangeText={setTexto}
+        placeholder="Digite seu texto aqui"
+        multiline={true}
+      />
+
+      <View style={styles.botoesContainer}>
+        <Button 
+          title='MAIÚSCULAS' 
+          onPress={converterMaiusculo} 
+          color='black' 
+        />
+        
+        <Button 
+          title='minúsculas' 
+          onPress={converterMinusculo} 
+          color='#333' 
+        />
+      </View>
+
+      {
+        mostrar && (
+          <Text style={styles.mensagem}>
+            {resultado}
+          </Text>
+        )
+      }
+
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,                    
+    justifyContent: 'center',   
+    alignItems: 'center',       
+    backgroundColor: '#f0f0f0',
+    padding: 20,
+  },
+  input: {
+    width: '80%',               
+    height: 100,              
+    borderWidth: 2,
+    borderColor: 'black',
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    fontSize: 18,
+    textAlignVertical: 'top',
+    marginBottom: 25,
+  },
+  botoesContainer: {
+    flexDirection: 'row',
+    gap: 15,
+    marginBottom: 30,
+  },
+  mensagem: {
+    fontSize: 22,
+    textAlign: 'center',
+    paddingHorizontal: 20,
+  },
+});
