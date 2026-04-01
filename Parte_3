@@ -1,0 +1,66 @@
+import { Text, Button, StyleSheet, View, TextInput } from 'react-native';
+import { useState } from 'react';
+
+export default function App() {
+
+  const [texto, setTexto] = useState('');
+  const [mostrar, setMostrar] = useState(false);
+  const [quantidade, setQuantidade] = useState(0);
+
+  const contarCaracteres = () => {
+    if (texto.length <= 0) {
+      alert('Digite algo antes de continuar');
+    } else {
+      setQuantidade(texto.length);
+      setMostrar(true);
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      
+      <TextInput 
+        style={styles.input}
+        onChangeText={setTexto}
+        placeholder="Digite seu texto aqui"
+        multiline={true}           
+      />
+
+      {
+        mostrar && (
+          <Text style={styles.mensagem}>
+            Quantidade de caracteres: {quantidade}
+          </Text>
+        )
+      }
+
+      <Button 
+        title='Contar Caracteres' 
+        onPress={contarCaracteres} 
+        color='black' 
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,                    
+    justifyContent: 'center',   
+    alignItems: 'center',       
+    backgroundColor: '#f0f0f0',
+  },
+  input: {
+    width: '80%',               
+    height: 100,              
+    borderWidth: 2,
+    borderColor: 'black',
+    borderRadius: 10,
+    textAlignVertical: 'top',
+  },
+  mensagem: {
+    fontSize: 24,
+    marginVertical: 30,
+    textAlign: 'center',
+  },
+});
