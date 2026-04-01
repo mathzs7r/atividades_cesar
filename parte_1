@@ -1,0 +1,41 @@
+import {Text,Button,StyleSheet,View,TextInput,} from 'react-native'
+import {useState} from 'react'
+
+export default function App() {
+
+const[nome, setNome] = useState('')
+const[mostrar, setMostrar] = useState(false)
+
+const gerarMensagem = (msg) => {
+      if(nome.length <= 0) {
+        alert('digite algo antes de continuar')
+      } else{
+        setMostrar(true)
+      }
+}
+
+  return (
+    <>
+      <View style={styles.container}>
+      
+        <TextInput onChangeText={setNome}/>
+        {
+          mostrar && nome && (
+            <Text>Olá, {nome} </Text>
+          )
+        }
+
+        <Button title='Gerar' onPress={() => {setMostrar(true)}} color='black' />
+      </View>
+    </>
+  );
+}
+
+
+const styles = StyleSheet.create({
+  container: {
+     borderWidth: 2,
+     alignItems: 'center',
+     borderRadius: 67,
+  },
+});
