@@ -1,0 +1,93 @@
+import { Text, Button, StyleSheet, View, TextInput } from 'react-native';
+import { useState } from 'react';
+
+export default function App() {
+
+  const [usuario, setUsuario] = useState('');
+  const [senha, setSenha] = useState('');
+  const [mensagem, setMensagem] = useState('');
+  const [mostrar, setMostrar] = useState(false);
+
+  const verificarAcesso = () => {
+    if (usuario.length <= 0 || senha.length <= 0) {
+      alert('Preencha todos os campos');
+    } 
+    else if (usuario === 'nakroth' && senha === '0000') {
+      setMensagem('Acesso permitido');
+      setMostrar(true);
+    } 
+    else {
+      setMensagem('Acesso negado');
+      setMostrar(true);
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      
+      <TextInput 
+        style={styles.input}
+        onChangeText={setUsuario}
+        placeholder="Usuário"
+        autoCapitalize="none"
+      />
+
+      <TextInput 
+        style={styles.input}
+        onChangeText={setSenha}
+        placeholder="Senha"
+        secureTextEntry={true}     
+      />
+
+      <Button 
+        title='Entrar' 
+        onPress={verificarAcesso} 
+        color='black' 
+      />
+
+      {
+        mostrar && (
+          <Text style={[
+            styles.mensagem,
+            mensagem === 'Acesso permitido' ? styles.sucesso : styles.erro
+          ]}>
+            {mensagem}
+          </Text>
+        )
+      }
+
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,                    
+    justifyContent: 'center',   
+    alignItems: 'center',       
+    backgroundColor: '#f0f0f0',
+    padding: 20,
+  },
+  input: {
+    width: '80%',               
+    height: 55,              
+    borderWidth: 2,
+    borderColor: 'black',
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    fontSize: 18,
+    marginBottom: 20,
+  },
+  mensagem: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 40,
+    textAlign: 'center',
+  },
+  sucesso: {
+    color: 'green',
+  },
+  erro: {
+    color: 'red',
+  },
+});
