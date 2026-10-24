@@ -1,20 +1,24 @@
-# atividades_cesar
+# atividades_cesar — React Native
 
-Atividades em partes (parte_1 a Parte_5), provavelmente exercícios de programação / algoritmos.
+Atividades em **React Native** (Expo / App.js), organizadas em partes progressivas.
 
 ## Arquivos
 
-| Arquivo | Descrição |
-|---------|-----------|
-| `parte_1` | Parte 1 |
-| `Parte_2` | Parte 2 |
-| `Parte_3` | Parte 3 |
-| `Parte_4` | Parte 4 |
-| `Parte_5` | Parte 5 |
+| Arquivo | Conteúdo |
+|---------|----------|
+| `parte_1` | TextInput + Button: digitar nome e exibir saudação |
+| `Parte_2` | Mesma ideia com estilos melhorados (input, mensagem, layout) |
+| `Parte_3` | Continuação das práticas de componentes e estado |
+| `Parte_4` | Continuação das práticas |
+| `Parte_5` | Continuação das práticas |
+
+Cada arquivo é um snippet de `App.js` (não um projeto Expo completo).
 
 ## Como usar
 
-Abra cada arquivo no editor e execute conforme a linguagem do conteúdo (verifique o código de cada parte).
+1. Crie um app Expo: `npx create-expo-app meu-app`
+2. Substitua o conteúdo de `App.js` pelo código de uma das partes
+3. Rode: `npx expo start`
 
 ## Autor
 
